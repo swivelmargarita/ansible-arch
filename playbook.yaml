@@ -12,13 +12,13 @@
   - name: Place zsh configuration file
     ansible.builtin.copy:
       src: /home/tvha/Downloads/config-files/.zshrc
-      dest: /home/tvha/
+      dest: /home/tvha/.zshrc
 
-#  - name: Change shell to zsh
-#    become: true
-#    ansible.builtin.shell:
-#      cmd: usermod -s /usr/bin/zsh tvha
-#
+  - name: Change shell to zsh
+    become: true
+    ansible.builtin.shell:
+      cmd: usermod -s /usr/bin/zsh tvha
+
   - name: Install xorg packages
     become: true
     community.general.pacman:
@@ -33,17 +33,28 @@
         - xorg-xrdb
         - xorg-xset
         - zsh
+        - zsh-syntax-highlighting
+        - zsh-autosuggestions
+        - pkgfile
         - ttf-iosevkaterm-nerd
         - ttf-iosevka-nerd
         - libxcb #dwmblocks
         - xcb-proto #deps
+        - xcb-util
+        - pkg-config
         - kitty
       state: present
 
   - name: Place touchpad configuration file
+    become: yes
     ansible.builtin.copy:
       src: /home/tvha/Downloads/config-files/40-libinput.conf
-      dest: /etc/X11/xorg.conf.d/
+      dest: /etc/X11/xorg.conf.d/40-libinput.conf
+
+  - name: Place .xinitrc file
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/.xinitrc
+      dest: /home/tvha/.xinitrc
 
   - name: Clone dwm
     ansible.builtin.git:
@@ -57,6 +68,18 @@
       chdir: /home/tvha/.config/dwm/
       cmd: rm config.h; make clean install
 
+  - name: Clone dmenu
+    ansible.builtin.git:
+      repo: https://github.com/tvha23/dmenu.git
+      dest: /home/tvha/.config/dmenu/
+      clone: true
+      update: true
+  - name: Install dmenu
+    become: yes
+    ansible.builtin.shell:
+      chdir: /home/tvha/.config/dmenu/
+      cmd: rm config.h; make clean install
+
   - name: Clone dwmblocks-async
     ansible.builtin.git:
       repo: https://github.com/tvha23/dwmblocks-async.git
@@ -68,13 +91,15 @@
     ansible.builtin.shell:
       chdir: /home/tvha/.config/dwmblocks-async/
       cmd: make clean install
+
+  - name: Make sure kitty dir is present in .config dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/kitty
+      state: directory
  
   - name: Place kitty config
     ansible.builtin.copy:
       src: /home/tvha/Downloads/config-files/kitty.conf
-      dest: /home/tvha/.config/kitty
-
-
-
+      dest: /home/tvha/.config/kitty/kitty.conf
 
 
