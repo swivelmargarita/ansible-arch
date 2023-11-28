@@ -23,6 +23,10 @@
     become: true
     community.general.pacman:
       name:
+        - pipewire
+        - pipewire-alsa
+        - pipewire-pulse
+        - wireplumber
         - xorg-server
         - xorg-setxkbmap
         - xorg-xauth
@@ -44,6 +48,13 @@
         - pkg-config
         - kitty
       state: present
+
+  - name: Enable pipewire pulseaudio service
+    ansible.builtin.systemd_service:
+      name: pipewire-pulse.service
+      scope: user
+      enabled: true
+      state: started
 
   - name: Place touchpad configuration file
     become: yes
