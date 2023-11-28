@@ -1,0 +1,80 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Clone configuration files from github
+    ansible.builtin.git:
+      repo: https://github.com/tvha23/config-files.git
+      dest: /home/tvha/Downloads/config-files/
+      clone: true
+      update: true
+
+  - name: Place zsh configuration file
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/.zshrc
+      dest: /home/tvha/
+
+#  - name: Change shell to zsh
+#    become: true
+#    ansible.builtin.shell:
+#      cmd: usermod -s /usr/bin/zsh tvha
+#
+  - name: Install xorg packages
+    become: true
+    community.general.pacman:
+      name:
+        - xorg-server
+        - xorg-setxkbmap
+        - xorg-xauth
+        - xorg-xev
+        - xorg-xinit
+        - xorg-xinput
+        - xorg-xrandr
+        - xorg-xrdb
+        - xorg-xset
+        - zsh
+        - ttf-iosevkaterm-nerd
+        - ttf-iosevka-nerd
+        - libxcb #dwmblocks
+        - xcb-proto #deps
+        - kitty
+      state: present
+
+  - name: Place touchpad configuration file
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/40-libinput.conf
+      dest: /etc/X11/xorg.conf.d/
+
+  - name: Clone dwm
+    ansible.builtin.git:
+      repo: https://github.com/tvha23/dwm.git
+      dest: /home/tvha/.config/dwm/
+      clone: true
+      update: true
+  - name: Install dwm
+    become: yes
+    ansible.builtin.shell:
+      chdir: /home/tvha/.config/dwm/
+      cmd: rm config.h; make clean install
+
+  - name: Clone dwmblocks-async
+    ansible.builtin.git:
+      repo: https://github.com/tvha23/dwmblocks-async.git
+      dest: /home/tvha/.config/dwmblocks-async/
+      clone: true
+      update: true
+  - name: Install dwmblocks-async
+    become: yes
+    ansible.builtin.shell:
+      chdir: /home/tvha/.config/dwmblocks-async/
+      cmd: make clean install
+ 
+  - name: Place kitty config
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/kitty.conf
+      dest: /home/tvha/.config/kitty
+
+
+
+
+
