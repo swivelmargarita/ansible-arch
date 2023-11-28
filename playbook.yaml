@@ -51,6 +51,12 @@
       src: /home/tvha/Downloads/config-files/40-libinput.conf
       dest: /etc/X11/xorg.conf.d/40-libinput.conf
 
+  - name: Place keyboard configuration file
+    become: yes
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/00-keyboard.conf
+      dest: /etc/X11/xorg.conf.d/00-keyboard.con
+
   - name: Place .xinitrc file
     ansible.builtin.copy:
       src: /home/tvha/Downloads/config-files/.xinitrc
