@@ -66,7 +66,7 @@
     become: yes
     ansible.builtin.copy:
       src: /home/tvha/Downloads/config-files/00-keyboard.conf
-      dest: /etc/X11/xorg.conf.d/00-keyboard.con
+      dest: /etc/X11/xorg.conf.d/00-keyboard.conf
 
   - name: Place .xinitrc file
     ansible.builtin.copy:
