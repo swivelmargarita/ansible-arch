@@ -54,9 +54,8 @@
 
   - name: Enable pipewire pulseaudio service
     ansible.builtin.systemd_service:
-      name: 
-        - pipewire-pulse.service
-        - mpd.service
+      name: pipewire-pulse.service
+      name: mpd.service
       scope: user
       enabled: true
       state: started
