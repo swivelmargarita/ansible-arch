@@ -1,0 +1,13 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Place zsh configuration file
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/.zshrc
+      dest: /home/tvha/.zshrc
+
+  - name: Change shell to zsh
+    become: true
+    ansible.builtin.shell:
+      cmd: usermod -s /usr/bin/zsh tvha
