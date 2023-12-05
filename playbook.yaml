@@ -9,53 +9,9 @@
       clone: true
       update: true
 
-  - name: Place zsh configuration file
-    ansible.builtin.copy:
-      src: /home/tvha/Downloads/config-files/.zshrc
-      dest: /home/tvha/.zshrc
-
-  - name: Change shell to zsh
-    become: true
-    ansible.builtin.shell:
-      cmd: usermod -s /usr/bin/zsh tvha
-
-  - name: Install xorg packages
-    become: true
-    community.general.pacman:
-      name:
-        - pipewire
-        - pipewire-alsa
-        - pipewire-pulse
-        - wireplumber
-        - xorg-server
-        - xorg-setxkbmap
-        - xorg-xauth
-        - xorg-xev
-        - xorg-xinit
-        - xorg-xinput
-        - xorg-xrandr
-        - xorg-xrdb
-        - xorg-xset
-        - zsh
-        - zsh-syntax-highlighting
-        - zsh-autosuggestions
-        - pkgfile
-        - ttf-iosevkaterm-nerd
-        - ttf-iosevka-nerd
-        - libxcb #dwmblocks
-        - xcb-proto #deps
-        - xcb-util
-        - pkg-config
-        - kitty
-        - mpd
-        - mpc
-        - ncmpcpp
-      state: present
-
   - name: Enable pipewire pulseaudio service
     ansible.builtin.systemd_service:
       name: pipewire-pulse.service
-      name: mpd.service
       scope: user
       enabled: true
       state: started
@@ -122,33 +78,3 @@
     ansible.builtin.copy:
       src: /home/tvha/Downloads/config-files/kitty.conf
       dest: /home/tvha/.config/kitty/kitty.conf
-
-  - name: Make sure mpd dir is present in .config dir
-    ansible.builtin.file:
-      path: /home/tvha/.config/mpd
-      state: directory
- 
-  - name: Make sure playlists dir is present in .config/mpd dir
-    ansible.builtin.file:
-      path: /home/tvha/.config/mpd/playlists
-      state: directory
-
-  - name: Make sure Music dir is present in ~ dir
-    ansible.builtin.file:
-      path: /home/tvha/Music
-      state: directory
-
-  - name: Place mpd config
-    ansible.builtin.copy:
-      src: /home/tvha/Downloads/config-files/mpd.conf
-      dest: /home/tvha/.config/mpd/mpd.conf
-
-  - name: Make sure ncmpcpp dir is present in .config dir
-    ansible.builtin.file:
-      path: /home/tvha/.config/ncmpcpp
-      state: directory
- 
-  - name: Place ncmpcpp config
-    ansible.builtin.copy:
-      src: /home/tvha/Downloads/config-files/config.ncmpcpp
-      dest: /home/tvha/.config/ncmpcpp/config
