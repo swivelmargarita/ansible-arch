@@ -1,0 +1,30 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Make sure sxhkd dir is present in .config dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/sxhkd
+      state: directory
+
+  - name: Place sxhkd config
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/sxhkdrc
+      dest: /home/tvha/.config/sxhkd/sxhkdrc
+
+  - name: Make sure systemd/user dir is present in .config dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/systemd/user
+      state: directory
+
+  - name: Put sxhd.service in .config/systemd/user
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/sxhkd.service
+      dest: /home/tvha/.config/systemd/user/sxhkd.service
+
+  - name: Enable sxhkd service
+    ansible.builtin.systemd_service:
+      name: sxhkd.service
+      scope: user
+      enabled: true
+      state: started
