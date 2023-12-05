@@ -1,0 +1,40 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Make sure mpd dir is present in .config dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/mpd
+      state: directory
+ 
+  - name: Make sure playlists dir is present in .config/mpd dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/mpd/playlists
+      state: directory
+
+  - name: Make sure Music dir is present in ~ dir
+    ansible.builtin.file:
+      path: /home/tvha/Music
+      state: directory
+
+  - name: Place mpd config
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/mpd.conf
+      dest: /home/tvha/.config/mpd/mpd.conf
+
+  - name: Enable mpd service
+    ansible.builtin.systemd_service:
+      name: mpd.service
+      scope: user
+      enabled: true
+      state: started
+
+  - name: Make sure ncmpcpp dir is present in .config dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/ncmpcpp
+      state: directory
+ 
+  - name: Place ncmpcpp config
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/config.ncmpcpp
+      dest: /home/tvha/.config/ncmpcpp/config
