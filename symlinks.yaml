@@ -1,0 +1,5 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+    - name: 

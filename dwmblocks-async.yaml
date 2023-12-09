@@ -1,0 +1,22 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+    - name: Place scripts into .local/bin directory
+      ansible.builtin.copy:
+        src: /home/tvha/Downloads/config-files/scripts/
+        dest: /home/tvha/.local/bin/
+        mode: '751'
+
+    - name: Clone dwmblocks-async
+      ansible.builtin.git:
+        repo: https://github.com/tvha23/dwmblocks-async.git
+        dest: /home/tvha/.config/dwmblocks-async/
+        clone: true
+        update: true
+
+    - name: Install dwmblocks-async
+      become: yes
+      ansible.builtin.shell:
+        chdir: /home/tvha/.config/dwmblocks-async/
+        cmd: make install

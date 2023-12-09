@@ -1,0 +1,13 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Make sure kitty dir is present in .config dir
+    ansible.builtin.file:
+      path: /home/tvha/.config/kitty
+      state: directory
+ 
+  - name: Place kitty config
+    ansible.builtin.copy:
+      src: /home/tvha/Downloads/config-files/kitty.conf
+      dest: /home/tvha/.config/kitty/kitty.conf
