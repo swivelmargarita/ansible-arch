@@ -22,6 +22,7 @@
         - xorg-xrandr
         - xorg-xrdb
         - xorg-xset
+        - xorg-xbacklight
         - xclip
 
           #Zsh
@@ -50,10 +51,12 @@
         - ncmpcpp
         - vlc
         - nsxiv
+        - nicotine+
 
           #Misc.
         - sxhkd
         - numlockx
         - maim
+        - bc
       state: present
 
