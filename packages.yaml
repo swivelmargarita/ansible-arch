@@ -58,5 +58,6 @@
         - numlockx
         - maim
         - bc
+        - speech-dispatcher
       state: present
 
