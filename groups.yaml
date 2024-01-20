@@ -1,0 +1,9 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Create groups
+    ansible.builtin.group:
+      name: "{{ item }}"
+      state: present
+    loop: "{{ user.groups }}"

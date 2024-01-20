@@ -1,0 +1,14 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Create users and groups
+    ansible.builtin.user:
+      name: "{{ user.name }}"
+      group: "{{ user.name }}"
+      groups: "{{ user.groups }}"
+      #Pass the password via console: -e new_pass=<NEW_PASSWORD>
+      #password: "{{ new_pass | password_hash('sha512', 'gladiatordoodle') }}"
+      update_password: on_create
+      append: true
+      shell: /usr/bin/zsh

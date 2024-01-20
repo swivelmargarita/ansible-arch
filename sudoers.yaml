@@ -1,0 +1,10 @@
+---
+- name: Configure Arch Linux
+  hosts: localhost
+  tasks:
+  - name: Add wheel group to sudoers
+    community.general.sudoers:
+      name: wheel
+      group: wheel
+      commands: ALL
+      nopassword: false
