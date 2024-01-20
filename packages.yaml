@@ -6,6 +6,8 @@
     become: true
     community.general.pacman:
       name:
+        - base-devel
+
         #Audio
         - pipewire
         - pipewire-alsa
