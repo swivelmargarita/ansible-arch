@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#if [ $(amixer get Master | tail -2 | grep -c '\[on\]') -eq 1 ]; then
+#	vol=$(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]')
+#	echo "墳$vol"
+#else
+#fi
+if [ $(amixer get Master | tail -2 | grep -c '\[on\]') -ne 2 ]; then
+  echo " MM"
+else
+  vol=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
+  echo "󰕾$vol"
+fi

@@ -4,23 +4,23 @@
   tasks:
   - name: Make sure mpd dir is present in .config dir
     ansible.builtin.file:
-      path: /home/tvha/.config/mpd
+      path: $USER/.config/mpd
       state: directory
  
   - name: Make sure playlists dir is present in .config/mpd dir
     ansible.builtin.file:
-      path: /home/tvha/.config/mpd/playlists
+      path: $USER/.config/mpd/playlists
       state: directory
 
   - name: Make sure Music dir is present in ~ dir
     ansible.builtin.file:
-      path: /home/tvha/Music
+      path: $USER/Music
       state: directory
 
   - name: Place mpd config
     ansible.builtin.copy:
-      src: /home/tvha/Downloads/config-files/mpd.conf
-      dest: /home/tvha/.config/mpd/mpd.conf
+      src: $USER/Downloads/config-files/mpd.conf
+      dest: $USER/.config/mpd/mpd.conf
 
   - name: Enable mpd service
     ansible.builtin.systemd_service:
@@ -31,10 +31,10 @@
 
   - name: Make sure ncmpcpp dir is present in .config dir
     ansible.builtin.file:
-      path: /home/tvha/.config/ncmpcpp
+      path: $USER/.config/ncmpcpp
       state: directory
  
   - name: Place ncmpcpp config
     ansible.builtin.copy:
-      src: /home/tvha/Downloads/config-files/config.ncmpcpp
-      dest: /home/tvha/.config/ncmpcpp/config
+      src: $USER/Downloads/config-files/config.ncmpcpp
+      dest: $USER/.config/ncmpcpp/config

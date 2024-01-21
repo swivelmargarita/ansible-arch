@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+display_battery() {
+perc=$(cat /sys/class/power_supply/BAT"$1"/capacity) 
+charging_status=$(cat /sys/class/power_supply/BAT"$1"/status)
+icon="󰂑"
+case $charging_status in
+  Discharging|"Not charging")
+    case $perc in 
+      [0-9])
+        icon="󱃍"
+        ;;
+      1[0-9])
+        icon="󰁺"
+        ;;
+      2[0-9])
+        icon="󰁻"
+        ;;
+
+      3[0-9])
+        icon="󰁼"
+        ;;
+
+
+      4[0-9])
+        icon="󰁽"
+        ;;
+
+      5[0-9])
+        icon="󰁾"
+        ;;
+      6[0-9])
+        icon="󰁿"
+        ;;
+      7[0-9])
+        icon="󰂀"
+        ;;
+      8[0-9])
+        icon="󰂁"
+        ;;
+
+      9[0-9])
+        icon="󰂂"
+        ;;
+
+      100)
+        icon="󰁹"
+        ;;
+    esac
+    ;;
+
+  Charging)
+    case $perc in 
+      [0-9])
+        icon="󰢟"
+
+        ;;
+      1[0-9])
+        icon="󰢜"
+        ;;
+      2[0-9])
+        icon="󰂆"
+        ;;
+
+      3[0-9])
+        icon="󰂇"
+        ;;
+
+      4[0-9])
+        icon="󰂈"
+        ;;
+
+      5[0-9])
+        icon="󰢝"
+        ;;
+      6[0-9])
+        icon="󰂉"
+        ;;
+      7[0-9])
+        icon="󰢞"
+        ;;
+      8[0-9])
+        icon="󰂊"
+        ;;
+
+      9[0-9])
+        icon="󰂋"
+        ;;
+
+      100)
+        icon="󰂄"
+        ;;
+    esac
+    ;;
+  Full)
+    icon="󰁹"
+    ;;
+esac
+echo -n "$icon$perc%"
+}
+display_battery 0
+[[ -d  /sys/class/power_supply/BAT1 ]] && display_battery 1

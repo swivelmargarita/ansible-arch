@@ -5,7 +5,7 @@
   - name: Clone configuration files from github
     ansible.builtin.git:
       repo: https://github.com/tvha23/config-files.git
-      dest: /home/tvha/Downloads/config-files/
+      dest: $USER/Downloads/config-files/
       clone: true
       update: true
 

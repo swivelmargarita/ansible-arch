@@ -1,0 +1,11 @@
+---
+- name: Post-Install Configuration of  Arch Linux install
+  hosts: localhost
+  roles:
+    #    - name: zsh
+    #    - name: xorg
+    #    - name: dwm
+    #    - name: dmenu
+    #    - name: dwmblocks-async
+    - name: kitty
+    - name: sxhkd

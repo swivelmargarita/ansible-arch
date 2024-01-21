@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+free_mem=$(free -h --giga | grep Mem | awk '{print $3}')
+total_mem=$(free -h --giga | grep Mem | awk '{print $2}')
+icon=""
+echo ${icon}${free_mem}\/${total_mem}

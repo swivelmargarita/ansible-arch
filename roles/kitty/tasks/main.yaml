@@ -1,0 +1,10 @@
+---
+- name: Make sure kitty dir is present in .config dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/kitty"
+    state: directory
+
+- name: Place kitty config
+  ansible.builtin.copy:
+    src: files/kitty.conf
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/kitty/kitty.conf"

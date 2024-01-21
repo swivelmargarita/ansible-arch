@@ -1,0 +1,40 @@
+#Turn the volume up and send signal to dwmblocks
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +1000; pkill -35 dwmblocks
+
+#Turn the volume down and send signal to dwmblocks
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -2000; pkill -35 dwmblocks
+
+#Mute the volume and send signal to dwmblocks
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -35 dwmblocks
+
+#Play the next song 
+XF86AudioNext
+    mpc -q next; pkill -36 dwmblocks
+
+
+#Play the previous song 
+XF86AudioPrev
+    mpc -q prev; pkill -36 dwmblocks
+
+
+#Play/Pause the current song 
+XF86AudioPlay
+    mpc -q toggle; pkill -36 dwmblocks
+
+
+#Increase Brightness
+XF86MonBrightnessUp
+    brightnessctl -q -n1 -e2.5 s +10%
+
+#Decrease Brightness
+XF86MonBrightnessDown
+    brightnessctl -q -n1 -e2.5 s 10%-
+
+#Full Screen Capture
+Print
+    maim -u | tee ~/Pictures/Screenshots/$(date "+%g_%m_%d_%R_%S").png | xclip -selection clipboard -t image/png
+super + Print
+    maim -u -s | tee ~/Pictures/Screenshots/$(date "+%g_%m_%d_%R_%S").png | xclip -selection clipboard -t image/png

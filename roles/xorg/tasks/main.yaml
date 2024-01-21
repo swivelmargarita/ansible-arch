@@ -1,0 +1,17 @@
+---
+- name: Place .xinitrc file
+  ansible.builtin.copy:
+    src: files/.xinitrc
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.xinitrc"
+
+- name: Place touchpad configuration file
+  become: yes
+  ansible.builtin.copy:
+    src: files/40-libinput.conf
+    dest: /etc/X11/xorg.conf.d/40-libinput.conf
+
+- name: Place keyboard configuration file
+  become: yes
+  ansible.builtin.copy:
+    src: files/00-keyboard.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf

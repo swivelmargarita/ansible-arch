@@ -13,19 +13,19 @@
 
     - name: Make sure directory .local/bin is present
       ansible.builtin.file:
-        path: /home/tvha/.local/bin
+        path: $USER/.local/bin
         state: directory
         mode: '751'
     - name: Unzip to the .local/bin
       ansible.builtin.unarchive:
         remote_src: true
         src: https://github.com/ahrm/sioyek/releases/download/{{release['tag']}}/sioyek-release-linux.zip
-        dest: /home/tvha/Downloads/sioyek-release-linux.zip
-        creates: /home/tvha/Downloads/sioyek-release-linux.zip
+        dest: $USER/Downloads/sioyek-release-linux.zip
+        creates: $USER/Downloads/sioyek-release-linux.zip
         list_files: true
       register: archive
     - name: Rename archived file to sioyek
       ansible.builtin.copy:
-        src: /home/tvha/.local/bin/{{archive['files'][0]}}
-        dest: /home/tvha/.local/bin/sioyek
+        src: $USER/.local/bin/{{archive['files'][0]}}
+        dest: $USER/.local/bin/sioyek
         mode: '751'

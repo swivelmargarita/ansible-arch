@@ -1,0 +1,19 @@
+---
+- name: Place scripts into .local/bin directory
+  ansible.builtin.copy:
+    src: files/scripts/
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.local/bin/"
+    mode: '751'
+
+- name: Clone dwmblocks-async
+  ansible.builtin.git:
+    repo: git@github.com:swivelmargarita/dwmblocks-async.git
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dwmblocks-async/"
+    clone: true
+    update: true
+
+- name: Install dwmblocks-async
+  become: yes
+  ansible.builtin.shell:
+    chdir: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dwmblocks-async/"
+    cmd: make install

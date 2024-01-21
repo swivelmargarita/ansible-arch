@@ -1,0 +1,10 @@
+---
+- name: Place zsh configuration file
+  ansible.builtin.copy:
+    src: files/.zshrc
+    dest: "{{ lookup('ansible.builtin.env', 'HOME')}}/.zshrc"
+
+- name: Change shell to zsh
+  become: true
+  ansible.builtin.shell:
+    cmd: "usermod -s /usr/bin/zsh {{ lookup('ansible.builtin.env', 'USER') }}"

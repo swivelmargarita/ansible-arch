@@ -1,0 +1,12 @@
+---
+- name: Clone dwm
+  ansible.builtin.git:
+    repo: git@github.com:swivelmargarita/dwm.git
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dwm/"
+    clone: true
+    update: true
+- name: Install dwm
+  become: yes
+  ansible.builtin.shell:
+    chdir: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dwm/"
+    cmd: rm config.h; make clean install

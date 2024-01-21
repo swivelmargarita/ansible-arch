@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Start mpd state change listener if already not started
+curr_song=$(mpc -f "%albumartist% - %title% #| %album%")
+icon=""
+echo "$icon$curr_song"

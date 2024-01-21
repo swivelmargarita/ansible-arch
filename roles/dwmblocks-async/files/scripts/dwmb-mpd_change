@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+while : ; do
+                mpc idle > /dev/null
+                pkill -37 dwmblocks
+        done ;

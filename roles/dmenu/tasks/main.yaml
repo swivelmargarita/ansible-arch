@@ -1,0 +1,12 @@
+---
+- name: Clone dmenu
+  ansible.builtin.git:
+    repo: git@github.com:swivelmargarita/dmenu.git
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dmenu/"
+    clone: true
+    update: true
+- name: Install dmenu
+  become: yes
+  ansible.builtin.shell:
+    chdir: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dmenu/"
+    cmd: rm config.h; make clean install
