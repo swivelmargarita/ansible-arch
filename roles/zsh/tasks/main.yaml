@@ -6,7 +6,7 @@
 
 - name: Symlink
   ansible.builtin.file:
-    src: " {{ role_path }}/files/.zshrc"
+    src: "{{ role_path }}/files/.zshrc"
     dest: "{{ lookup('ansible.builtin.env', 'HOME')}}/.zshrc"
     state: link
 
