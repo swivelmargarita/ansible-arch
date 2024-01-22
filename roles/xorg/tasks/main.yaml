@@ -4,6 +4,11 @@
     src: files/.xinitrc
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.xinitrc"
 
+- name: Place .Xresources configuration file
+  ansible.builtin.copy:
+    src: files/.Xresources
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.Xresources"
+
 - name: Place touchpad configuration file
   become: yes
   ansible.builtin.copy:

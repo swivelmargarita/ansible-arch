@@ -4,6 +4,12 @@
     src: files/.zshrc
     dest: "{{ lookup('ansible.builtin.env', 'HOME')}}/.zshrc"
 
+- name: Symlink
+  ansible.builtin.file:
+    src: " {{ role_path }}/files/.zshrc"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME')}}/.zshrc"
+    state: link
+
 - name: Change shell to zsh
   become: true
   ansible.builtin.shell:
