@@ -6,7 +6,7 @@ export BROWSER=firefox
 export HISTTIMEFORMAT="[%y-%m-%d, %T] "
 export DISPLAY=:0
 export MANPAGER='nvim +Man!'
-export PATH=/home/tvha/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 autoload -U colors && colors #Load colors for use in promt
 
@@ -51,7 +51,7 @@ zstyle ':completion:*' rehash true
 
 
 #History
-HISTFILE="/home/tvha/.zsh_history"
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=420000069
 SAVEHIST=420000069
 
@@ -62,7 +62,7 @@ export PROMPT='%F{cyan}%n%F{69}@%F{211}% %m %F{white}%~${NEWLINE} %F{99} ✌ %F{
 
 
 #nnn environment variables
-export NNN_BMS="d:$HOME/Downloads;t:/run/media/tvha/TOSHIBA EXT/;h:$HOME;c:$HOME/College/;p:$HOME/Pictures;s:$HOME/Pictures/Screenshots;v:$HOME/Videos;e:$HOME/Downloads/Telegram Desktop"
+export NNN_BMS="d:$HOME/Downloads;t:/run/media/$USER/TOSHIBA EXT/;h:$HOME;c:$HOME/College/;p:$HOME/Pictures;s:$HOME/Pictures/Screenshots;v:$HOME/Videos;e:$HOME/Downloads/Telegram Desktop"
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui'
 export NNN_TRASH=1

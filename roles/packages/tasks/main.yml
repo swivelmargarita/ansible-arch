@@ -1,0 +1,86 @@
+---
+- name: Upgrade the system
+  become: true
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+
+- name: Install packages
+  become: true
+  community.general.pacman:
+    name:
+      #Compiling stuff
+      - base-devel
+
+      #Audio
+      - pipewire
+      - pipewire-alsa
+      - pipewire-pulse
+      - wireplumber
+      - alsa-utils
+
+        #Xorg
+      - xorg-server
+      - xorg-setxkbmap
+      - xorg-xauth
+      - xorg-xev
+      - xorg-xinit
+      - xorg-xinput
+      - xorg-xrandr
+      - xorg-xrdb
+      - xorg-xset
+      - xorg-xbacklight
+      - xclip
+
+        #Zsh
+      - zsh
+      - zsh-syntax-highlighting
+      - zsh-autosuggestions
+      - pkgfile
+
+        #Fonts
+      - ttf-iosevkaterm-nerd
+      - ttf-iosevka-nerd
+      - ttf-font-awesome
+
+        #Dwmblocks-async dependencies
+      - libxcb
+      - xcb-proto
+      - xcb-util
+      - pkg-config
+
+        #Terminal
+      - kitty
+
+        #Multimedia
+      - mpd
+      - mpc
+      - mpv
+      - ncmpcpp
+      - vlc
+      - nsxiv
+      - nicotine+
+      - yt-dlp
+      - zathura
+
+        #Misc.
+      - firefox
+      - sxhkd
+      - numlockx
+      - maim
+      - bc
+      - speech-dispatcher
+      - bat
+      - syncthing
+      - obsidian
+      - unzip
+      - unrar
+      - telegram-desktop 
+      - sof-firmware
+      - qbittorrent
+      - thunar
+      - thunar-volman
+      - gvfs
+      - brightnessctl
+      - colordiff
+      - fzf

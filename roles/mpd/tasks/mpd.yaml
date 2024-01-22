@@ -1,0 +1,37 @@
+---
+- name: Make sure mpd dir is present in .config dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env, 'HOME') }}/.config/mpd"
+    state: directory
+
+- name: Make sure playlists dir is present in .config/mpd dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env, 'HOME') }}/.config/mpd/playlists"
+    state: directory
+
+- name: Make sure Music dir is present in ~ dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env, 'HOME') }}/Music"
+    state: directory
+
+- name: Place mpd config
+  ansible.builtin.copy:
+    src: files/mpd.conf
+    dest: "{{ lookup('ansible.builtin.env, 'HOME') }}/.config/mpd/mpd.conf"
+
+- name: Enable mpd service
+  ansible.builtin.systemd_service:
+    name: mpd.service
+    scope: user
+    enabled: true
+    state: started
+
+- name: Make sure ncmpcpp dir is present in .config dir
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env, 'HOME') }}/.config/ncmpcpp"
+    state: directory
+
+- name: Place ncmpcpp config
+  ansible.builtin.copy:
+    src: files/config.ncmpcpp
+    dest: "{{ lookup('ansible.builtin.env, 'HOME') }}/.config/ncmpcpp/config"

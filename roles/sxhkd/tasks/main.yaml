@@ -9,19 +9,19 @@
     src: files/sxhkdrc
     dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/sxhkd/sxhkdrc"
 
-- name: Make sure systemd/user dir is present in .config dir
-  ansible.builtin.file:
-    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/systemd/user"
-    state: directory
-
-- name: Put sxhd.service in .config/systemd/user
-  ansible.builtin.copy:
-    src: files/sxhkd.service
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/systemd/user/sxhkd.service"
-
-- name: Enable sxhkd service
-  ansible.builtin.systemd_service:
-    name: sxhkd.service
-    scope: user
-    enabled: true
-    state: started
+      #- name: Make sure systemd/user dir is present in .config dir
+      #  ansible.builtin.file:
+      #    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/systemd/user"
+      #    state: directory
+      #
+      #- name: Put sxhd.service in .config/systemd/user
+      #  ansible.builtin.copy:
+      #    src: files/sxhkd.service
+      #    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/systemd/user/sxhkd.service"
+      #
+      #- name: Enable sxhkd service
+      #  ansible.builtin.systemd_service:
+      #    name: sxhkd.service
+      #    scope: user
+      #    enabled: true
+      #    state: started
