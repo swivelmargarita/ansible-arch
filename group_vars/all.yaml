@@ -1,5 +1,8 @@
 ---
+username: cerberus
 user:
-  name: cerberus
+  name: "{{ username }}"
   groups: 
+    - "{{ username }}"
     - wheel
+  home: "/home/{{ username }}"
