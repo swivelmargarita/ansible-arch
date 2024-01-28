@@ -6,3 +6,4 @@ user:
     - "{{ username }}"
     - wheel
   home: "/home/{{ username }}"
+curr_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
