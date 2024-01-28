@@ -2,12 +2,12 @@
 - name: Place zsh configuration file
   ansible.builtin.copy:
     src: files/.zshrc
-    dest: "{{ lookup('ansible.builtin.env', 'HOME')}}/.zshrc"
+    dest: "{{ curr_home}}/.zshrc"
 
 - name: Symlink
   ansible.builtin.file:
     src: "{{ role_path }}/files/.zshrc"
-    dest: "{{ lookup('ansible.builtin.env', 'HOME')}}/.zshrc"
+    dest: "{{ curr_home}}/.zshrc"
     state: link
 
 - name: Change shell to zsh

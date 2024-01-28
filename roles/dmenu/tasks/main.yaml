@@ -8,5 +8,5 @@
 - name: Install dmenu
   become: yes
   ansible.builtin.shell:
-    chdir: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/dmenu/"
+    chdir: "{{ curr_home }}/.config/dmenu/"
     cmd: rm config.h; make clean install

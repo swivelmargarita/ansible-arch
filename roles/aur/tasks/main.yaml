@@ -1,0 +1,33 @@
+---
+- name: Get aur_builder user info
+  ansible.builtin.getent:
+    database: passwd
+    key: aur_builder
+    fail_key: false
+- ansible.builtin.debug:
+    var: ansible_facts.getent_passwd
+
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
+    #when: ansible_facts.getent_passwd.aur_builder == None
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+
+- name: Install trizen using makepkg if it isn't installed already
+  kewlfft.aur.aur:
+    name: trizen
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
