@@ -1,0 +1,8 @@
+---
+- name: Place pacman conf file
+  become: yes
+  ansible.builtin.copy:
+    src: files/pacman.conf
+    dest: /etc/pacman.conf
+    owner: root
+    mode: '0644'
