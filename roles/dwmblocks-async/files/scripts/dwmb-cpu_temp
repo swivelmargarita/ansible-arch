@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-cpu_zone_indexes=(1 2 3 5 6)
-sum_of_temps=0
-for i in ${cpu_zone_indexes[@]}; do
-    curr_temp_file_reading=$(cat /sys/class/thermal/thermal_zone${i}/temp)
-    curr_temp=$(echo $curr_temp_file_reading/1000 | bc)
-    sum_of_temps=$(echo "$sum_of_temps"'+'"$curr_temp"|bc)
-done
-avg_temp=$(echo "$sum_of_temps" / "${#cpu_zone_indexes[@]}"|bc)
+temp=$(acpi -t | awk '{ printf("\x01\x02%d°\x01", $4)}'|sed $'s/[^[:print:]\t]//g')
 icon=""
-echo "$icon$avg_temp"
+echo "$icon$temp"
