@@ -64,6 +64,11 @@
       - zathura
 
         #Misc.
+      - python
+      - nnn
+      - openssh
+      - git
+      - acpi
       - firefox
       - sxhkd
       - numlockx
