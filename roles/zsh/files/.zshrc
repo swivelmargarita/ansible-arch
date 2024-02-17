@@ -65,7 +65,7 @@ export PROMPT='%F{cyan}%n%F{69}@%F{211}% %m %F{white}%~${NEWLINE} %F{99} ✌ %F{
 export NNN_BMS="d:$HOME/Downloads;t:/run/media/$USER/TOSHIBA EXT/;h:$HOME;c:$HOME/College/;p:$HOME/Pictures;s:$HOME/Pictures/Screenshots;v:$HOME/Videos;e:$HOME/Downloads/Telegram Desktop"
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui'
-export NNN_TRASH=1
+export NNN_TRASH=0
 
 #fzf show hidden files 
 export FZF_DEFAULT_COMMAND="find -L"
