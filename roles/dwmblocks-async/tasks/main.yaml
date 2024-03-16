@@ -1,39 +1,38 @@
 ---
-#Removed bc we symlink instead of copying
-#- name: Place scripts into .local/bin directory
-#  ansible.builtin.copy:
-#    src: files/scripts/
-#    dest: "{{ curr_home }}/.local/bin/"
-#    mode: '751'
+- name: Place scripts into .local/bin directory
+  ansible.builtin.copy:
+    src: files/scripts/
+    dest: "{{ curr_home }}/.local/bin/"
+    mode: '751'
 
-- name: Make a symlink
-  block:
-    - name: Get files from scripts dir
-      ansible.builtin.find:
-        path: "{{ role_path }}/files/scripts/"
-      register: find
+#- name: Make a symlink
+#  block:
+#    - name: Get files from scripts dir
+#      ansible.builtin.find:
+#        path: "{{ role_path }}/files/scripts/"
+#      register: find
 
-    - name: Echo files
-      ansible.builtin.debug:
-        var: find.files
+#    - name: Echo files
+#      ansible.builtin.debug:
+#        var: find.files
 
-    - name: Symlink
-      ansible.builtin.file:
-          src: "{{ item.path }}"
-          dest: "{{ curr_home }}/.local/bin/{{ item.path | basename }}"
-          state: link
-      with_items: "{{ find.files }}"
+#    - name: Symlink
+#      ansible.builtin.file:
+#          src: "{{ item.path }}"
+#          dest: "{{ curr_home }}/.local/bin/{{ item.path | basename }}"
+#          state: link
+#      with_items: "{{ find.files }}"
 
 
-- name: Clone dwmblocks-async
-  ansible.builtin.git:
-    repo: git@github.com:swivelmargarita/dwmblocks-async.git
-    dest: "{{ curr_home }}/.config/dwmblocks-async/"
-    clone: true
-    update: true
-
-- name: Install dwmblocks-async
-  become: yes
-  ansible.builtin.shell:
-    chdir: "{{ curr_home }}/.config/dwmblocks-async/"
-    cmd: make install
+#- name: Clone dwmblocks-async
+#  ansible.builtin.git:
+#    repo: git@github.com:swivelmargarita/dwmblocks-async.git
+#    dest: "{{ curr_home }}/.config/dwmblocks-async/"
+#    clone: true
+#    update: true
+#
+#- name: Install dwmblocks-async
+#  become: yes
+#  ansible.builtin.shell:
+#    chdir: "{{ curr_home }}/.config/dwmblocks-async/"
+#    cmd: make install
