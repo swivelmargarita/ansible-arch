@@ -35,6 +35,9 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+#Incremental search in vim mode
+bindkey -M vicmd '/' history-incremental-search-backward
+
 
 #Show hidden files in completion
 _comp_options+=(globdots)
