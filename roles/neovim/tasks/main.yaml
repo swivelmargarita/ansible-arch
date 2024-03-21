@@ -1,8 +1,5 @@
 ---
-- name: Put init.lua into config folder
-  ansible.builtin
----
-- name: Make sure kitty dir is present in .config dir
+- name: Make sure nvim dir is present in .config dir
   ansible.builtin.file:
     path: "{{ curr_home }}/.config/nvim"
     state: directory
