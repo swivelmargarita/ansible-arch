@@ -89,3 +89,5 @@
       - brightnessctl
       - colordiff
       - fzf
+      - wget
+
