@@ -4,11 +4,6 @@
     src: files/.zshrc
     dest: "{{ curr_home}}/.zshrc"
 
-- name: Symlink
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/.zshrc"
-    dest: "{{ curr_home}}/.zshrc"
-    state: link
 
 - name: Change shell to zsh
   become: true
