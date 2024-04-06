@@ -98,4 +98,7 @@ esac
 echo -n "$icon$perc%"
 }
 display_battery 0
-[[ -d  /sys/class/power_supply/BAT1 ]] && display_battery 1
+if [[ -d  /sys/class/power_supply/BAT1 ]]
+then
+    display_battery 1
+fi
