@@ -6,5 +6,5 @@
 
 - name: Place kitty config
   ansible.builtin.copy:
-    src: files/init.lua
+    src: files/
     dest: "{{ curr_home }}/.config/nvim/"
