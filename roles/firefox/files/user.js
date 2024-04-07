@@ -866,10 +866,10 @@ user_pref("_user.js.parrot", "5000 syntax error: the parrot's taken 'is last bow
    // user_pref("browser.download.forbid_open_with", true);
 /* 5010: disable location bar suggestion types
  * [SETTING] Privacy & Security>Address Bar>When using the address bar, suggest ***/
-   // user_pref("browser.urlbar.suggest.history", false);
+   user_pref("browser.urlbar.suggest.history", false);
    // user_pref("browser.urlbar.suggest.bookmark", false);
    // user_pref("browser.urlbar.suggest.openpage", false);
-   // user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
+   user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
 /* 5011: disable location bar dropdown
  * This value controls the total number of entries to appear in the location bar dropdown ***/
    // user_pref("browser.urlbar.maxRichResults", 0);
@@ -1227,4 +1227,45 @@ user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!"
 
 //CUSTOM PREFS
 user_pref("general.autoScroll", true);
+//Remove bloat
+user_pref("browser.preferences.moreFromMozilla", false);
+user_pref("identity.fxaccounts.enabled", false);
+user_pref("identity.fxaccounts.pairing.enabled", false);
+user_pref("identity.fxaccounts.toolbar.defaultVisible", false);
+user_pref("identity.fxaccounts.toolbar.enabled", false);
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false);
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.monitorEnabled", false);
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.relayEnabled", false);
+user_pref("identity.fxaccounts.toolbar.pxiToolbarEnabled.vpnEnabled", false);
 
+user_pref("browser.aboutwelcome.enabled", false);
+user_pref("distribution.archlinux.bookmarksProcessed", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);
+user_pref("", false);

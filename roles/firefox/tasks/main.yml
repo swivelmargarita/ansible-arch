@@ -5,18 +5,31 @@
     path: "/etc/firefox/policies/"
     state: directory
 
-- name: Place scripts into .local/bin directory
+- name: Place policies file to a policies directory
   become: yes
   ansible.builtin.copy:
     src: files/policies.json
     dest: "/etc/firefox/policies/policies.json"
+
+
+- name: Place profile.ini config file into mozilla config directory
+  ansible.builtin.copy:
+    src: files/profiles.ini
+    dest: "{{ curr_home }}/.mozilla/firefox/profiles.ini"
+
+- name: Replace profile name with username in profile.ini
+  ansible.builtin.replace:
+    path: "{{ curr_home }}/.mozilla/firefox/profiles.ini"
+    regexp: '<your_username>'
+    replace: "{{ user.name }}"
+
 
 - name: Make sure <username> profile directory is availabe
   ansible.builtin.file:
     path: "{{ curr_home }}/.mozilla/firefox/{{ user.name }}"
     state: directory
 
-- name: Place scripts into .local/bin directory
+- name: Place user.js into profile directory
   ansible.builtin.copy:
     src: files/user.js
     dest:  "{{ curr_home }}/.mozilla/firefox/{{ user.name }}/user.js"
