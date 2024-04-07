@@ -1,5 +1,6 @@
 ---
-username: cerberus
+#Provide your username below and uncomment it
+#username: 
 user:
   name: "{{ username }}"
   groups: 
