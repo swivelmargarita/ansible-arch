@@ -1,2 +1,22 @@
 ---
-# tasks file for firefox
+- name: Make sure policies directory is availabe
+  become: yes
+  ansible.builtin.file:
+    path: "/etc/firefox/policies/"
+    state: directory
+
+- name: Place scripts into .local/bin directory
+  become: yes
+  ansible.builtin.copy:
+    src: files/policies.json
+    dest: "/etc/firefox/policies/policies.json"
+
+- name: Make sure iris profile directory is availabe
+  ansible.builtin.file:
+    path: "{{ curr_home }}/.mozilla/firefox/{{ user.name }}"
+    state: directory
+
+- name: Place scripts into .local/bin directory
+  ansible.builtin.copy:
+    src: files/user.js
+    dest:  "{{ curr_home }}/.mozilla/firefox/{{ user.name }}/user.js"
