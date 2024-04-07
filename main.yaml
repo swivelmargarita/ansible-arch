@@ -14,3 +14,4 @@
     #- name: sxhkd
     #- name: xorg
     #- name: zsh
+    #- name: firefox
