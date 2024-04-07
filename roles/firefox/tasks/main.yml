@@ -11,7 +11,7 @@
     src: files/policies.json
     dest: "/etc/firefox/policies/policies.json"
 
-- name: Make sure iris profile directory is availabe
+- name: Make sure <username> profile directory is availabe
   ansible.builtin.file:
     path: "{{ curr_home }}/.mozilla/firefox/{{ user.name }}"
     state: directory
