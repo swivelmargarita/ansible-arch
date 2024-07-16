@@ -1,0 +1,29 @@
+---
+- name: Clone paru
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/paru-bin.git
+    dest: "{{ curr_home }}/.config/paru-bin/"
+    clone: true
+    #update: true
+
+- name: Install dependecies
+  become: true
+  community.general.pacman:
+    name:
+      - cargo
+
+- name: Compile the package
+  become: true
+  become_user: dog
+  ansible.builtin.command:
+    chdir: "{{ curr_home }}/.config/paru-bin/"
+    argv:
+      - makepkg
+      - --noconfirm
+      -  --needed
+      -  --noprogressbar
+      -  --clean
+      -  --syncdeps
+      -  --rmdeps
+      -  --force
+      - --install
