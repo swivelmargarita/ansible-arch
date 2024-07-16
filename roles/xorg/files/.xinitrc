@@ -5,6 +5,7 @@ then
 elif [[ $Xaxis -eq 2560 ]]
 then
 	echo Xft.dpi: 144 > ~/.Xresources
+fi
 
  
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
@@ -12,4 +13,5 @@ then
 dwmblocks &
 numlockx &
 sxhkd &
-exec dwm
+udiskie &
+exec ssh-agent dwm
