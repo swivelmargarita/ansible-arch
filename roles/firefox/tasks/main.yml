@@ -33,3 +33,8 @@
   ansible.builtin.copy:
     src: files/user.js
     dest:  "{{ curr_home }}/.mozilla/firefox/{{ user.name }}.default/user.js"
+
+- name: Re-create the bookmarks folders and add bookmarks to the firefox
+  ansible.builtin.script: 
+    chdir: "{{ role_path }}/files/"
+    cmd: ./firefox_bookmark.py
