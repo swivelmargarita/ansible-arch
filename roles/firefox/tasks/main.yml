@@ -26,10 +26,10 @@
 
 - name: Make sure <username> profile directory is availabe
   ansible.builtin.file:
-    path: "{{ curr_home }}/.mozilla/firefox/{{ user.name }}"
+    path: "{{ curr_home }}/.mozilla/firefox/{{ user.name }}.default"
     state: directory
 
 - name: Place user.js into profile directory
   ansible.builtin.copy:
     src: files/user.js
-    dest:  "{{ curr_home }}/.mozilla/firefox/{{ user.name }}/user.js"
+    dest:  "{{ curr_home }}/.mozilla/firefox/{{ user.name }}.default/user.js"
