@@ -9,86 +9,108 @@
   become: true
   community.general.pacman:
     name:
-      #Compiling stuff
+      - acpi
+      - alsa-utils
+      - ansible
+      - arandr
+      - base
       - base-devel
-
-      #Audio
+      - bat
+      - bc
+      - brightnessctl
+      - colordiff
+      - firefox
+      - fzf
+      - git
+      - gvfs
+      - gvfs-mtp
+      - gvfs-nfs
+      - htop
+      - inetutils
+      - intel-ucode
+      - iw
+      - iwd
+      - kitty
+      - libreoffice-fresh
+      - libxcb
+      - linux-firmware
+      - maim
+      - mpc
+      - mpd
+      - mpv
+      - ncmpcpp
+      - neovim
+      - nicotine+
+      - nnn
+      - npm
+      - nsxiv
+      - ntfs-3g
+      - numlockx
+      - obsidian
+      - openssh
+      - p7zip
+      - pavucontrol
       - pipewire
       - pipewire-alsa
       - pipewire-pulse
+      - pkgconfig
+      - pkgfile
+      - python
+      - qbittorrent
+      - qemu-base
+      - reflector
+      - ripgrep
+      - rsync
+      - rust
+      - speech-dispatcher
+      - sxhkd
+      - syncthing
+      - telegram-desktop 
+      - thunar
+      - thunar-volman
+      - ttf-font-awesome
+      - ttf-iosevka-nerd
+      - ttf-iosevkaterm-nerd
+      - udiskie
+      - unrar
+      - unzip
+      - vi
+      - vim
+      - vlc
+      - wget
       - wireplumber
-      - alsa-utils
-
-        #Xorg
+      - xcb-proto
+      - xcb-util
+      - xclip
       - xorg-server
       - xorg-setxkbmap
       - xorg-xauth
+      - xorg-xbacklight
       - xorg-xev
       - xorg-xinit
       - xorg-xinput
       - xorg-xrandr
       - xorg-xrdb
       - xorg-xset
-      - xorg-xbacklight
-      - xclip
-
-        #Zsh
-      - zsh
-      - zsh-syntax-highlighting
-      - zsh-autosuggestions
-      - pkgfile
-
-        #Fonts
-      - ttf-iosevkaterm-nerd
-      - ttf-iosevka-nerd
-      - ttf-font-awesome
-
-        #Dwmblocks-async dependencies
-      - libxcb
-      - xcb-proto
-      - xcb-util
-      - pkg-config
-
-        #Terminal
-      - kitty
-
-        #Multimedia
-      - mpd
-      - mpc
-      - mpv
-      - ncmpcpp
-      - vlc
-      - nsxiv
-      - nicotine+
       - yt-dlp
       - zathura
+      - zathura-djvu
+      - zathura-pdf-mupdf 
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
 
-        #Misc.
-      - python
-      - nnn
-      - openssh
-      - git
-      - acpi
-      - firefox
-      - sxhkd
-      - numlockx
-      - maim
-      - bc
-      - ripgrep
-      - speech-dispatcher
-      - bat
-      - syncthing
-      - obsidian
-      - unzip
-      - unrar
-      - telegram-desktop 
-      - sof-firmware
-      - qbittorrent
-      - thunar
-      - thunar-volman
-      - gvfs
-      - brightnessctl
-      - colordiff
-      - fzf
-      - wget
-
+- name: Install packages from AUR
+  become: true
+  community.general.pacman:
+    executable: paru
+    name:
+      - dynamips 
+      - gns3-gui 
+      - gns3-server 
+      - nbfc-linux 
+      - paru-bin 
+      - sioyek-appimage 
+      - ubridge 
+      - ungoogled-chromium-bin 
+      - vpcs 
