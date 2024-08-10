@@ -11,6 +11,11 @@
     src: files/policies.json
     dest: "/etc/firefox/policies/policies.json"
 
+- name: Make sure config directory is availabe
+  ansible.builtin.file:
+    path: "{{ curr_home}}/.mozilla/firefox/"
+    state: directory
+
 
 - name: Place profile.ini config file into mozilla config directory
   ansible.builtin.copy:
