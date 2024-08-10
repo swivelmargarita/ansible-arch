@@ -56,6 +56,8 @@
       - pkgconfig
       - pkgfile
       - python
+      - python-github3py
+      - python-pyjwt
       - qbittorrent
       - qemu-base
       - reflector
@@ -101,6 +103,7 @@
       - zsh-syntax-highlighting
 
 - name: Install packages from AUR
+  become_user: dog
   become: true
   community.general.pacman:
     executable: paru
