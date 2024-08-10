@@ -4,7 +4,8 @@
     repo: git@github.com:swivelmargarita/dwm.git
     dest: "{{ curr_home }}/.config/dwm/"
     clone: true
-    update: true
+    update: false
+    #force: true
 - name: Install dwm
   become: yes
   ansible.builtin.shell:
