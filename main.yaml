@@ -2,16 +2,17 @@
 - name: Post-Install Configuration of  Arch Linux install
   hosts: localhost
   roles:
-    #- name: audio
-    #- name: packages
-    #- name: user
-    #- name: dmenu
-    #- name: dwm
-    #- name: dwmblocks-async
-    #- name: kitty
-    #- name: mpd
-    #- name: neovim
-    #- name: sxhkd
-    #- name: xorg
-    #- name: zsh
-    #- name: firefox
+    - name: paru
+    - name: packages
+    - name: audio
+    - name: user
+    - name: dmenu
+    - name: dwm
+    - name: dwmblocks-async
+    - name: kitty
+    - name: mpd
+    - name: neovim
+    - name: sxhkd
+    - name: xorg
+    - name: zsh
+    - name: firefox
