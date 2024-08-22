@@ -10,7 +10,8 @@
         "https://github.com/iamadamdev/bypass-paywalls-chrome/releases/latest/download/bypass-paywalls-firefox.xpi",
         "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi",
         "https://addons.mozilla.org/firefox/downloads/latest/simple-translate/latest.xpi",
-        "https://addons.mozilla.org/firefox/downloads/latest/buster-captcha-solver/latest.xpi"
+        "https://addons.mozilla.org/firefox/downloads/latest/buster-captcha-solver/latest.xpi",
+        "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi"
       ]
     },
     "ExtensionUpdate": true,

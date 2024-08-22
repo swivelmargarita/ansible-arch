@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
-import os
-import sqlite3
-import shutil
-import time
+import os, shutil, sqlite3
 
 
 def create_bookmarks():
@@ -30,6 +27,7 @@ def delete_previous_remembered_websites():
     db.execute("DELETE FROM moz_perms WHERE origin LIKE 'https://%' OR  origin LIKE 'http://%'")
     db.commit()
     db.close()
+
 def add_remembered_websites():
     username = os.getlogin()
     websites = ["open.spotify.com", "twitter.com", "github.com", "gitlab.com", "web.whatsapp.com"]
