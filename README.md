@@ -8,5 +8,6 @@ Comment out or delete unneeded roles from the [main.yaml](https://gitlab.com/tur
 
 ```bash
 git clone https://gitlab.com/turbo-zone/ansible-arch/
+cd ansible-arch
 ansible-playbook --ask-become-pass main.yaml 
 ```
