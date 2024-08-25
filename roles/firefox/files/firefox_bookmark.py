@@ -9,7 +9,7 @@ class Bookmark():
         self.title = title
         self.parent = parent
 
-def create_bookmark_folders():
+def create_bookmarks():
     username = os.getlogin()
     places_path = "places.sqlite"
     db = sqlite3.connect(places_path)
@@ -20,15 +20,7 @@ def create_bookmark_folders():
     for i, category in enumerate(categories):
         db.execute(f"INSERT INTO moz_bookmarks (type, title, position, parent)\
                      VALUES ('2', '{category}', '{i}', '3');")
-    db.commit()
-    db.close()
-    shutil.copyfile("./places.sqlite", f"/home/{username}/.mozilla/firefox/{username}.default/places.sqlite")
-    shutil.copyfile("./places.sqlite.original", "./places.sqlite")
 
-def create_bookmars():
-    username = os.getlogin()
-    places_path = "places.sqlite"
-    db = sqlite3.connect(places_path)
     bookmarks = {"Music": [["open.spotify.com","Spotify"],
                           ["last.fm", "Last.fm"]
                           ],
@@ -62,15 +54,11 @@ def create_bookmars():
     for category, websites in bookmarks.items():
         for website in websites:
             db.execute(f"INSERT INTO moz_places (url, title, foreign_count)\
-                    VALUES('https://www.{website[0]}', '{website[1]}', '1');")
-            print(f"INSERT INTO moz_bookmarks (type, fk, parent, title)\ VALUES('1', (SELECT id FROM moz_places WHERE title = '{website[1]}'),\ (SELECT id FROM moz_bookmarks WHERE title = '{category}'),\ '{website[1]}');")
+                    VALUES('{website[0]}', '{website[1]}', '1');")
             db.execute(f"INSERT INTO moz_bookmarks (type, fk, parent, title)\
                     VALUES('1', (SELECT id FROM moz_places WHERE title = '{website[1]}'),\
                                 (SELECT id FROM moz_bookmarks WHERE title = '{category}'),\
                                 '{website[1]}');")
-
-                            
-
     db.commit()
     db.close()
     shutil.copyfile("./places.sqlite", f"/home/{username}/.mozilla/firefox/{username}.default/places.sqlite")
@@ -99,5 +87,4 @@ def add_remembered_websites():
 if __name__ == "__main__":
     delete_previous_remembered_websites()
     add_remembered_websites()
-    create_bookmark_folders()
-    create_bookmars()
+    create_bookmarks()
