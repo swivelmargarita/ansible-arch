@@ -1,0 +1,6 @@
+---
+- name: Execute script from nnn git repo to install the nnn plugins
+  become: true
+  become_user: dog
+  ansible.builtin.shell: 
+    cmd: sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sed '1s|^#!.*|#!/bin/sh|')"
