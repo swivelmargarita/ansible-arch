@@ -65,7 +65,17 @@ export PROMPT='%F{cyan}%n%F{69}@%F{211}% %m %F{white}%~${NEWLINE} %F{99} ✌ %F{
 
 
 #nnn environment variables
-export NNN_BMS="d:$HOME/Downloads;t:/run/media/$USER/TOSHIBA EXT/;h:$HOME;c:$HOME/College/;p:$HOME/Pictures;s:$HOME/Pictures/Screenshots;v:$HOME/Videos;e:$HOME/Downloads/Telegram Desktop"
+export NNN_BMS="d:$HOME/Downloads;\
+                t:/run/media/$USER/TOSHIBA EXT/;\
+                h:$HOME;\
+                p:$HOME/Pictures;\
+                s:$HOME/Pictures/Screenshots;\
+                v:$HOME/Videos;\
+                e:$HOME/Downloads/Telegram Desktop;\
+                m:/mnt\
+                "
+export NNN_BMS=${NNN_BMS// }
+export NNN_ORDER="t:/home/$USER/Downloads"
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='p:preview-tui'
 export NNN_TRASH=0
