@@ -13,6 +13,7 @@
       - alsa-utils
       - ansible
       - arandr
+      - atool
       - base
       - base-devel
       - bat
@@ -98,6 +99,7 @@
       - zathura
       - zathura-djvu
       - zathura-pdf-mupdf 
+      - zip
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
