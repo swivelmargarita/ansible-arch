@@ -1,6 +1,6 @@
 ---
 #Provide your username below and uncomment it
-#username: 
+username: "{{ lookup('ansible.builtin.env', 'USER') }}"
 user:
   name: "{{ username }}"
   groups: 
