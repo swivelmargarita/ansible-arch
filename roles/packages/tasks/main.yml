@@ -105,10 +105,7 @@
       - zsh-syntax-highlighting
 
 - name: Install packages from AUR
-  become_user: dog
-  become: true
-  community.general.pacman:
-    executable: paru
+  kewlfft.aur.aur:
     name:
       - dynamips 
       - gns3-gui 
@@ -119,3 +116,20 @@
       - ubridge 
       - ungoogled-chromium-bin 
       - vpcs 
+    state: present
+    use: paru
+      #- name: Install packages from AUR
+      #  become_user: dog
+      #  #become: true
+      #  community.general.pacman:
+      #    executable: paru
+      #    name:
+      #      - dynamips 
+      #      - gns3-gui 
+      #      - gns3-server 
+      #      - nbfc-linux 
+      #      - paru-bin 
+      #      - sioyek-appimage 
+      #      - ubridge 
+      #      - ungoogled-chromium-bin 
+      #      - vpcs 
