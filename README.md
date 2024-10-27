@@ -3,7 +3,7 @@
 Turbo Ansible Arch is an ansible playbook for configuring your Arch Linux post-install. 
 ## Usage
 
-Clone the [repository](https://gitlab.com/turbo-zone/ansible-arch/) and execute the playlist. 
+Clone the [repository](https://gitlab.com/turbo-zone/ansible-arch/) and execute the playbook. 
 Comment out or delete unneeded roles from the [main.yaml](https://gitlab.com/turbo-zone/ansible-arch/-/blob/master/main.yaml)
 
 ```bash
